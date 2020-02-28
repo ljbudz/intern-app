@@ -1,17 +1,18 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import ApplicationCreate from "./applications/ApplicationCreate";
 import ApplicationEdit from "./applications/ApplicationEdit";
 import ApplicationDelete from "./applications/ApplicationDelete";
 import ApplicationList from "./applications/ApplicationList";
 import ApplicationShow from "./applications/ApplicationShow";
 import Header from "./Header";
+import history from "../history";
 import "./App.css";
 
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header />
           <Switch>
@@ -22,7 +23,7 @@ class App extends React.Component {
             <Route path="/applications/delete/:id" exact component={ApplicationDelete}></Route>
           </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
