@@ -22,3 +22,13 @@ export const signOut = () => {
     type: SIGN_OUT
   };
 };
+
+export const createApplication = formValues => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+  const response = await application.post("/applications", { ...formValues, userId });
+  dispatch({
+    type: CREATE_APPLICATION,
+    payload: response.data
+  });
+  history.push("/");
+};
