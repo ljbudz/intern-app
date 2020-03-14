@@ -32,3 +32,25 @@ export const createApplication = formValues => async (dispatch, getState) => {
   });
   history.push("/");
 };
+
+export const fetchApplications = () => async dispatch => {
+  const response = await application.get("/applications");
+  dispatch({ type: FETCH_APPLICATIONS, payload: response.data });
+};
+
+export const fetchApplication = id => async dispatch => {
+  const response = await application.get(`/applications/${id}`);
+  dispatch({ type: FETCH_APPLICATION, payload: response.data });
+};
+
+export const editApplication = (id, formValues) => async dispatch => {
+  const response = await application.patch(`/applications/${id}`, formValues);
+  dispatch({ type: EDIT_APPLICATION, payload: response.data });
+  history.push("/");
+};
+
+export const deleteApplication = id => async dispatch => {
+  const response = await application.delete(`/applications/${id}`);
+  dispatch({ type: DELETE_APPLICATION, payload: id });
+  history.push("/");
+};
