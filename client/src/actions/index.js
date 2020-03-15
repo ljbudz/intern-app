@@ -50,7 +50,7 @@ export const editApplication = (id, formValues) => async dispatch => {
 };
 
 export const deleteApplication = id => async dispatch => {
-  const response = await application.delete(`/applications/${id}`);
+  await application.delete(`/applications/${id}`);
   dispatch({ type: DELETE_APPLICATION, payload: id });
   history.push("/");
 };

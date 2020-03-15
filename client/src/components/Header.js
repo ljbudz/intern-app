@@ -1,15 +1,20 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
+import { Menu } from "semantic-ui-react";
 
 const Header = () => {
   return (
-    <AppBar position="static">
-      <Toolbar variant="dense">
-        <Typography variant="h5">Intern.io</Typography>
-        <GoogleAuth />
-      </Toolbar>
-    </AppBar>
+    <Menu secondary>
+      <Link to="/" className="item">
+        Intern.io
+      </Link>
+      <Menu.Menu position="right">
+        <Menu.Item>
+          <GoogleAuth />
+        </Menu.Item>
+      </Menu.Menu>
+    </Menu>
   );
 };
 

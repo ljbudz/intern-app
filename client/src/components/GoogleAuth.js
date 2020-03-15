@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../actions";
-import GoogleButton from "react-google-button";
-import { Button } from "@material-ui/core";
+import { Button, Icon } from "semantic-ui-react";
 
 class GoogleAuth extends React.Component {
   componentDidMount() {
@@ -37,17 +36,17 @@ class GoogleAuth extends React.Component {
   };
 
   renderAuthButton() {
-    console.log(this.props.isSignedIn);
     if (this.props.isSignedIn === null) {
       return null;
     } else if (this.props.isSignedIn) {
+      return <Button onClick={this.onSignOutClick}>Sign Out</Button>;
+    } else {
       return (
-        <Button onClick={this.onSignOutClick} variant="contained" color="default">
-          Sign Out
+        <Button onClick={this.onSignInClick} primary>
+          <Icon name="google plus" />
+          Sign In
         </Button>
       );
-    } else {
-      return <GoogleButton onClick={this.onSignInClick} />;
     }
   }
 

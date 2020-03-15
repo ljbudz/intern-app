@@ -1,26 +1,23 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { Form, Button, Message } from "semantic-ui-react";
 
 class ApplicationForm extends React.Component {
   renderInput = ({ input, label, meta }) => {
-    const className = `${meta.error && meta.touched ? "error" : ""}`;
+    const className = meta.error && meta.touched ? "error" : "";
 
     return (
-      <div className={className}>
+      <Form.Field className={className}>
         <label>{label}</label>
         <input {...input} autoComplete="off" />
         {this.renderError(meta)}
-      </div>
+      </Form.Field>
     );
   };
 
   renderError({ error, touched }) {
     if (touched && error) {
-      return (
-        <div className="ui error message">
-          <div className="header">{error}</div>
-        </div>
-      );
+      return <Message negative content={error} />;
     }
   }
 
@@ -30,11 +27,11 @@ class ApplicationForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+      <Form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="title" component={this.renderInput} label="Enter title"></Field>
         <Field name="company" component={this.renderInput} label="Enter company"></Field>
-        <button>Submit</button>
-      </form>
+        <Button type="submit">Submit</Button>
+      </Form>
     );
   }
 }

@@ -11,7 +11,7 @@ class ApplicationCreate extends React.Component {
   render() {
     return (
       <div>
-        <h3>Create Application</h3>
+        <h1>Create Application</h1>
         <ApplicationForm onSubmit={this.onSubmit} />
       </div>
     );
