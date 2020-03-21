@@ -5,7 +5,7 @@ import { Menu } from "semantic-ui-react";
 
 const Header = () => {
   return (
-    <Menu secondary>
+    <Menu fixed="top" secondary style={{ backgroundColor: "white" }}>
       <Link to="/" className="item">
         Intern.io
       </Link>

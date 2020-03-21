@@ -15,7 +15,7 @@ class App extends React.Component {
     return (
       <Container>
         <Router history={history}>
-          <div>
+          <div style={{ paddingTop: "70px" }}>
             <Header />
             <Switch>
               <Route path="/" exact component={ApplicationList}></Route>

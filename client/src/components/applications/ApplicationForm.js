@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 import { Form, Button, Message } from "semantic-ui-react";
 
 class ApplicationForm extends React.Component {
@@ -30,7 +31,14 @@ class ApplicationForm extends React.Component {
       <Form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="title" component={this.renderInput} label="Enter title"></Field>
         <Field name="company" component={this.renderInput} label="Enter company"></Field>
-        <Button type="submit">Submit</Button>
+        <div>
+          <Button color="blue" type="submit">
+            Submit
+          </Button>
+          <Button negative as={Link} to="/">
+            Cancel
+          </Button>
+        </div>
       </Form>
     );
   }
