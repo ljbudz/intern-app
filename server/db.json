@@ -1,24 +1,6 @@
 {
   "applications": [
     {
-      "title": "Software Developer",
-      "company": "Microsoft",
-      "userId": "106419485708717222762",
-      "id": 1
-    },
-    {
-      "title": "Software Engineer",
-      "company": "Apple",
-      "userId": "106419485708717222762",
-      "id": 2
-    },
-    {
-      "title": "Front-end Developer",
-      "company": "Intuit",
-      "userId": "106419485708717222762",
-      "id": 3
-    },
-    {
       "title": "Full Stack Developer",
       "company": "Amazon",
       "userId": "106419485708717222762",
@@ -31,7 +13,7 @@
       "id": 5
     },
     {
-      "title": "Mobile Developer",
+      "title": "Spectacle Developer",
       "company": "Snapchat",
       "userId": "106419485708717222762",
       "id": 6
