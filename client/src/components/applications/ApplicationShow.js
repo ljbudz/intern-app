@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchApplication } from "../../actions";
 import { Link } from "react-router-dom";
-import { Item, Loader, Button } from "semantic-ui-react";
+import { Item, Loader, Button, Image } from "semantic-ui-react";
 
 class ApplicationShow extends React.Component {
   componentDidMount() {
@@ -23,7 +23,11 @@ class ApplicationShow extends React.Component {
     return (
       <Item.Group>
         <Item>
-          <Item.Image size="tiny" src={`//logo.clearbit.com/${company}.com`} />
+          <Image
+            size="tiny"
+            src={`//logo.clearbit.com/${company}.com`}
+            onError={e => (e.target.src = "/company.png")}
+          />
           <Item.Content>
             <Item.Header as="h2">{title}</Item.Header>
             <Item.Meta>{company}</Item.Meta>

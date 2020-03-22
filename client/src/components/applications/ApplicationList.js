@@ -25,6 +25,7 @@ class ApplicationList extends React.Component {
               verticalAlign="middle"
               size="mini"
               src={`//logo.clearbit.com/${application.company}.com`}
+              onError={e => (e.target.src = "company.png")}
             />
             <Card.Header>{application.title}</Card.Header>
             <Card.Meta>{application.company}</Card.Meta>
