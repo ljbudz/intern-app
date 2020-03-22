@@ -12,7 +12,7 @@ class ApplicationCreate extends React.Component {
     return (
       <div>
         <h1>Create Application</h1>
-        <ApplicationForm onSubmit={this.onSubmit} />
+        <ApplicationForm onSubmit={this.onSubmit} cancelLink="/" />
       </div>
     );
   }

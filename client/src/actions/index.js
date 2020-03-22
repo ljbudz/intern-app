@@ -46,7 +46,7 @@ export const fetchApplication = id => async dispatch => {
 export const editApplication = (id, formValues) => async dispatch => {
   const response = await application.patch(`/applications/${id}`, formValues);
   dispatch({ type: EDIT_APPLICATION, payload: response.data });
-  history.push("/");
+  history.push(`/applications/${id}`);
 };
 
 export const deleteApplication = id => async dispatch => {

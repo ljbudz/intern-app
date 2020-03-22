@@ -28,6 +28,7 @@ class ApplicationEdit extends React.Component {
         <ApplicationForm
           onSubmit={this.onSubmit}
           initialValues={_.pick(this.props.application, "title", "company")}
+          cancelLink={`/applications/${this.props.match.params.id}`}
         />
       </div>
     );

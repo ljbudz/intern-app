@@ -65,6 +65,12 @@
       "company": "Test Company",
       "userId": "106419485708717222762",
       "id": 14
+    },
+    {
+      "title": "Engineer Lead",
+      "company": "Sony",
+      "userId": "106419485708717222762",
+      "id": 15
     }
   ]
 }

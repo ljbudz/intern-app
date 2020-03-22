@@ -49,7 +49,9 @@ class ApplicationList extends React.Component {
             Create
           </Button>
         </Header>
-        <Card.Group itemsPerRow="2">{this.renderList()}</Card.Group>
+        <Card.Group itemsPerRow="2" stackable>
+          {this.renderList()}
+        </Card.Group>
       </div>
     );
   }
