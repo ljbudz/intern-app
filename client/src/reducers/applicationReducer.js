@@ -10,11 +10,11 @@ import {
 export default (state = {}, action) => {
   switch (action.type) {
     case CREATE_APPLICATION:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case FETCH_APPLICATION:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case FETCH_APPLICATIONS:
-      return { ...state, ..._.mapKeys(action.payload, "id") };
+      return { ...state, ..._.mapKeys(action.payload, "_id") };
     case EDIT_APPLICATION:
       return { ...state, [action.payload.id]: action.payload };
     case DELETE_APPLICATION:

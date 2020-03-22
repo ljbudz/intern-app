@@ -5,74 +5,62 @@ var data = [
   {
     title: "Full Stack Developer",
     company: "Amazon",
-    userId: "106419485708717222762",
-    id: 4
+    userId: "106419485708717222762"
   },
   {
     title: "Software Junior Developer",
     company: "Facebook",
-    userId: "106419485708717222762",
-    id: 5
+    userId: "106419485708717222762"
   },
   {
     title: "Spectacle Developer",
     company: "Snapchat",
-    userId: "106419485708717222762",
-    id: 6
+    userId: "106419485708717222762"
   },
   {
     title: "Software Engineering Intern",
     company: "Bloomberg",
-    userId: "106419485708717222762",
-    id: 7
+    userId: "106419485708717222762"
   },
   {
     title: "Cloud Architect",
     company: "Cisco",
-    userId: "106419485708717222762",
-    id: 8
+    userId: "106419485708717222762"
   },
   {
     title: "Software Intern",
     company: "Yelp",
-    userId: "106419485708717222762",
-    id: 9
+    userId: "106419485708717222762"
   },
   {
     title: "Machine Learning Engineer",
     company: "Blackberry",
-    userId: "106419485708717222762",
-    id: 10
+    userId: "106419485708717222762"
   },
   {
     title: "Front End Developer",
     company: "Intuit",
-    userId: "106419485708717222762",
-    id: 11
+    userId: "106419485708717222762"
   },
   {
     title: "Explorer Intern",
     company: "Microsoft",
-    userId: "106419485708717222762",
-    id: 12
+    userId: "106419485708717222762"
   },
   {
     title: "iOS Engineer",
     company: "Apple",
-    userId: "106419485708717222762",
-    id: 13
+    userId: "106419485708717222762"
   },
   {
     title: "Test",
     company: "Test Company",
-    userId: "106419485708717222762",
-    id: 14
+    userId: "106419485708717222762"
   },
   {
     title: "Engineer Lead",
     company: "Sony",
-    userId: "106419485708717222762",
-    id: 15
+    userId: "106419485708717222762"
   }
 ];
 

@@ -27,7 +27,6 @@ class ApplicationForm extends React.Component {
   };
 
   render() {
-    console.log(this.props.id);
     return (
       <Form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <Field name="title" component={this.renderInput} label="Enter title"></Field>

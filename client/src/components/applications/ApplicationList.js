@@ -14,9 +14,9 @@ class ApplicationList extends React.Component {
       return (
         <Card
           fluid
-          key={application.id}
+          key={application._id}
           as={Link}
-          to={`/applications/${application.id}`}
+          to={`/applications/${application._id}`}
           raised={true}
         >
           <Card.Content>
