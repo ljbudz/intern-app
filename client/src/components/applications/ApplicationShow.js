@@ -18,7 +18,7 @@ class ApplicationShow extends React.Component {
       );
     }
 
-    const { title, company, id } = this.props.application;
+    const { title, company, _id } = this.props.application;
 
     return (
       <Item.Group>
@@ -35,10 +35,10 @@ class ApplicationShow extends React.Component {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dolorem!
             </Item.Description>
             <Item.Extra>
-              <Button primary as={Link} to={`/applications/edit/${id}`}>
+              <Button primary as={Link} to={`/applications/edit/${_id}`}>
                 Edit
               </Button>
-              <Button negative as={Link} to={`/applications/delete/${id}`}>
+              <Button negative as={Link} to={`/applications/delete/${_id}`}>
                 Delete
               </Button>
             </Item.Extra>

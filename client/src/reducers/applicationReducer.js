@@ -16,7 +16,7 @@ export default (state = {}, action) => {
     case FETCH_APPLICATIONS:
       return { ...state, ..._.mapKeys(action.payload, "_id") };
     case EDIT_APPLICATION:
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case DELETE_APPLICATION:
       return _.omit(state, action.payload);
     default:
