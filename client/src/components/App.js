@@ -7,8 +7,9 @@ import ApplicationList from "./applications/ApplicationList";
 import ApplicationShow from "./applications/ApplicationShow";
 import Header from "./Header";
 import history from "../history";
-import "semantic-ui-css/semantic.min.css";
 import { Container } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
+import "./App.css";
 
 class App extends React.Component {
   render() {

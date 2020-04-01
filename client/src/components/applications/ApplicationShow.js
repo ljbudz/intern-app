@@ -2,12 +2,42 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchApplication } from "../../actions";
 import { Link } from "react-router-dom";
-import { Item, Loader, Button, Progress } from "semantic-ui-react";
+import { Item, Loader, Button } from "semantic-ui-react";
+import Stepper from "../ui/Stepper";
+import Emoji from "../ui/Emoji";
 
 class ApplicationShow extends React.Component {
   componentDidMount() {
     this.props.fetchApplication(this.props.match.params.id);
   }
+
+  steps = [
+    {
+      title: "Watching",
+      subTitle: <Emoji symbol={"🕑"} />,
+      description: "Reviewing job posting."
+    },
+    {
+      title: "Applied",
+      subTitle: <Emoji symbol={"📆"} />,
+      description: "Submitted resume and cover letter."
+    },
+    {
+      title: "Response",
+      subTitle: <Emoji symbol={"💬"} />,
+      description: "Company responded with interview or rejection."
+    },
+    {
+      title: "Interviewed",
+      subTitle: <Emoji symbol={"👔"} />,
+      description: "Interviewed with the company."
+    },
+    {
+      title: "Final Decision",
+      subTitle: <Emoji symbol={"✅"} />,
+      description: "Final decision made."
+    }
+  ];
 
   render() {
     if (!this.props.application) {
@@ -18,7 +48,7 @@ class ApplicationShow extends React.Component {
       );
     }
 
-    const { title, company, _id } = this.props.application;
+    const { title, company, stage, _id } = this.props.application;
 
     return (
       <Item.Group>
@@ -35,7 +65,7 @@ class ApplicationShow extends React.Component {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, dolorem!
             </Item.Description>
             <Item.Extra>
-              <Button primary as={Link} to={`/applications/edit/${_id}`}>
+              <Button className="button-blue" as={Link} to={`/applications/edit/${_id}`}>
                 Edit
               </Button>
               <Button negative as={Link} to={`/applications/delete/${_id}`}>
@@ -46,7 +76,7 @@ class ApplicationShow extends React.Component {
         </Item>
         <Item>
           <Item.Content>
-            <Progress percent={100} label="test"></Progress>
+            <Stepper current={stage} steps={this.steps} />
           </Item.Content>
         </Item>
       </Item.Group>
