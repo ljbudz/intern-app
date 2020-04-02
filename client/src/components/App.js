@@ -10,6 +10,9 @@ import history from "../history";
 import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
+import Login from "./Login";
+import withAuth from "./withAuth";
+import Secret from "./Secret";
 
 class App extends React.Component {
   render() {
@@ -19,7 +22,9 @@ class App extends React.Component {
           <div style={{ paddingTop: "70px" }}>
             <Header />
             <Switch>
-              <Route path="/" exact component={ApplicationList}></Route>
+              <Route path="/login" exact component={Login} />
+              <Route path="/secret" exact component={withAuth(Secret)} />
+              <Route path="/applications" exact component={ApplicationList}></Route>
               <Route path="/applications/new" exact component={ApplicationCreate}></Route>
               <Route path="/applications/:id" exact component={ApplicationShow}></Route>
               <Route path="/applications/edit/:id" exact component={ApplicationEdit}></Route>

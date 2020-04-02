@@ -40,6 +40,8 @@ class ApplicationList extends React.Component {
             </Card.Content>
           </Card>
         );
+      } else {
+        return null;
       }
     });
   }
@@ -60,13 +62,14 @@ class ApplicationList extends React.Component {
 
     return (
       <Menu text>
-        {filters.map(({ name, stage: itemStage }) => {
+        {filters.map(({ name, stage: itemStage }, i) => {
           return (
             <Menu.Item
               name={name}
               stage={itemStage}
               active={itemStage === stage}
               onClick={this.handleItemClick}
+              key={i}
             />
           );
         })}
