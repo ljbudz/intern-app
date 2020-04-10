@@ -12,7 +12,7 @@ class ApplicationList extends React.Component {
   }
 
   renderList() {
-    return this.props.applications.map(application => {
+    return this.props.applications.map((application) => {
       if (application.stage === this.state.stage) {
         return (
           <Card
@@ -28,7 +28,7 @@ class ApplicationList extends React.Component {
                 verticalAlign="middle"
                 size="mini"
                 src={`//logo.clearbit.com/${application.company}.com`}
-                onError={e => (e.target.src = "company.png")}
+                onError={(e) => (e.target.src = "company.png")}
               />
               <Card.Header>{application.title}</Card.Header>
               <Card.Meta>{application.company}</Card.Meta>
@@ -95,11 +95,11 @@ class ApplicationList extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     applications: Object.values(state.applications),
-    currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn
+    userId: state.auth.user._id,
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

@@ -4,7 +4,7 @@ import { createApplication } from "../../actions";
 import ApplicationForm from "./ApplicationForm";
 
 class ApplicationCreate extends React.Component {
-  onSubmit = formValues => {
+  onSubmit = (formValues) => {
     this.props.createApplication(formValues);
   };
 

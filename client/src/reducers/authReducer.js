@@ -1,16 +1,23 @@
-import { SIGN_IN, SIGN_OUT } from "../actions/types";
+import { SET_CURRENT_USER, LOADING_USER } from "../actions/types";
+import _ from "lodash";
 
 const INITIAL_STATE = {
-  isSignedIn: null,
-  userId: null
+  isAuthenticated: false,
+  user: {},
+  loading: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SIGN_IN:
-      return { ...state, isSignedIn: true, userId: action.payload };
-    case SIGN_OUT:
-      return { ...state, isSignedIn: false, userId: null };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !_.isEmpty(action.payload),
+        user: action.payload,
+        loading: false
+      };
+    case LOADING_USER:
+      return { ...state, loading: true };
     default:
       return state;
   }
