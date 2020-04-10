@@ -29,14 +29,12 @@ export const getCurrentUserData = () => (dispatch) => {
       dispatch(setCurrentUser(res.data));
     })
     .catch((err) => {
+      dispatch(setCurrentUser({}));
       dispatch({ type: GET_ERRORS, payload: err.response });
     });
 };
 
 export const setCurrentUser = (userData) => {
-  if (history.location.pathname === "/login") {
-    history.push("/applications");
-  }
   return {
     type: SET_CURRENT_USER,
     payload: userData

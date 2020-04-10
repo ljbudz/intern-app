@@ -15,6 +15,12 @@ class Login extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.auth.isAuthenticated) {
+      history.push("/applications");
+    }
+  }
+
   render() {
     return (
       <div>

@@ -6,7 +6,6 @@ const middleware = require("../../middleware");
 const { secret } = require("../../config");
 
 router.get("/verify", middleware.authenticated, (req, res) => {
-  console.log(req.secret);
   const { _id, email } = req;
   res.status(200).json({ _id, email });
 });

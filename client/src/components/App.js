@@ -1,17 +1,7 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { connect } from "react-redux";
-
-import Login from "./auth/Login";
-import Register from "./auth/Register";
-
-import ProtectedRoute from "./ProtectedRoute";
-import ApplicationCreate from "./applications/ApplicationCreate";
-import ApplicationEdit from "./applications/ApplicationEdit";
-import ApplicationDelete from "./applications/ApplicationDelete";
-import ApplicationList from "./applications/ApplicationList";
-import ApplicationShow from "./applications/ApplicationShow";
-
+import Routes from "./Routes";
 import Header from "./Header";
 import history from "../history";
 import { getCurrentUserData } from "../actions";
@@ -48,35 +38,7 @@ class App extends React.Component {
         <Router history={history}>
           <div style={{ paddingTop: "70px" }}>
             <Header />
-            <Switch>
-              <Route path="/login" exact component={Login}></Route>
-              <Route path="/register" exact component={Register}></Route>
-              <ProtectedRoute
-                path="/applications"
-                exact
-                component={ApplicationList}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                path="/applications/new"
-                exact
-                component={ApplicationCreate}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                path="/applications/:id"
-                exact
-                component={ApplicationShow}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                path="/applications/edit/:id"
-                exact
-                component={ApplicationEdit}
-              ></ProtectedRoute>
-              <ProtectedRoute
-                path="/applications/delete/:id"
-                exact
-                component={ApplicationDelete}
-              ></ProtectedRoute>
-            </Switch>
+            <Routes />
           </div>
         </Router>
       </Container>
