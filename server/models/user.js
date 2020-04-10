@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-UserSchema.pre("save", function(next) {
+UserSchema.pre("save", function (next) {
   // Check if document is new or a new password has been set
   if (this.isNew || this.isModified("password")) {
     // Saving reference to this because of changing scopes
@@ -26,7 +26,7 @@ UserSchema.pre("save", function(next) {
   }
 });
 
-UserSchema.methods.isCorrectPassword = function(password, callback) {
+UserSchema.methods.isCorrectPassword = function (password, callback) {
   bcrypt.compare(password, this.password, (err, same) => {
     if (err) {
       callback(err);

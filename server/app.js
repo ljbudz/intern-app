@@ -2,19 +2,17 @@ const express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   cookieParser = require("cookie-parser"),
-  Application = require("./models/application"),
-  User = require("./models/user"),
   mongooose = require("mongoose"),
   seedDB = require("./seeds"),
   { port } = require("./config");
 
 const indexRoutes = require("./routes/index"),
-  applicationRoutes = require("./routes/application"),
-  authRoutes = require("./routes/auth");
+  applicationRoutes = require("./routes/api/application"),
+  authRoutes = require("./routes/api/auth");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(cookieParser("thisismykey"));
 
 mongooose.connect("mongodb://localhost:27017/intern_app", {
   useNewUrlParser: true,
@@ -31,8 +29,8 @@ seedDB();
 
 app.use("/", indexRoutes);
 app.use("/applications", applicationRoutes);
-app.use("/api", authRoutes);
+app.use("/auth", authRoutes);
 
-app.listen(port || 8080, function() {
+app.listen(port || 8080, () => {
   console.log("Server started.");
 });
