@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const applicationSchema = new mongoose.Schema({
   title: String,
   company: String,
-  userId: String,
   stage: Number
 });
 

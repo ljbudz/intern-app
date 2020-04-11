@@ -61,7 +61,7 @@ export const createApplication = (formValues) => async (dispatch, getState) => {
     type: CREATE_APPLICATION,
     payload: response.data
   });
-  history.push("/");
+  history.push("/applications");
 };
 
 export const fetchApplications = () => async (dispatch) => {

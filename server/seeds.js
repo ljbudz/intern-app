@@ -1,5 +1,6 @@
-var mongoose = require("mongoose");
-var Application = require("./models/application");
+const mongoose = require("mongoose");
+const Application = require("./models/application");
+const User = require("./models/user");
 
 var data = [
   {
@@ -77,18 +78,19 @@ var data = [
 ];
 
 function seedDB() {
-  Application.deleteMany({}, err => {
+  Application.deleteMany({}, (err) => {
     if (err) {
       console.log(err);
     }
     console.log("Removed applications");
-    data.forEach(seed => {
-      Application.create(seed, err => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Added an application");
-        }
+    User.findOne({ email: "hello@me.com" }, (err, user) => {
+      if (err) return console.log(err);
+      user.applications = [];
+      Application.insertMany(data, (err, app) => {
+        app.forEach(({ _id }) => {
+          user.applications.push(_id);
+        });
+        user.save();
       });
     });
   });
