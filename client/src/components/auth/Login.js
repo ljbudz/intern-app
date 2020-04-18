@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Box, Heading } from "grommet";
 import { logInUser } from "../../actions";
 import AuthForm from "./AuthForm";
 import history from "../../history";
@@ -23,10 +24,12 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Login</h1>
-        <AuthForm onSubmit={this.onSubmit} cancelLink="/" />
-      </div>
+      <Box align="center" justify="center" pad={{ bottom: "xlarge" }}>
+        <Box width="medium">
+          <Heading level="2">Login</Heading>
+          <AuthForm onSubmit={this.onSubmit} />
+        </Box>
+      </Box>
     );
   }
 }

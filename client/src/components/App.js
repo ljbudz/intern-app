@@ -5,13 +5,19 @@ import Routes from "./Routes";
 import Header from "./Header";
 import history from "../history";
 import { getCurrentUserData } from "../actions";
-import { Container, Loader } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
-import "./App.css";
+import { Grommet, Footer, Anchor, Text, Box } from "grommet";
+import { grommet, dark } from "grommet/themes";
+import Emoji from "./ui/Emoji";
 
+import "./App.css";
 class App extends React.Component {
   state = {
     initialized: false
+  };
+
+  THEME = {
+    light: grommet,
+    dark: dark
   };
 
   componentDidMount() {
@@ -26,28 +32,36 @@ class App extends React.Component {
 
   render() {
     if (!this.state.initialized) {
-      return (
-        <Loader active size="medium">
-          Loading...
-        </Loader>
-      );
+      return <div>Loading...</div>;
     }
 
     return (
-      <Container>
-        <Router history={history}>
-          <div style={{ paddingTop: "70px" }}>
-            <Header />
-            <Routes />
-          </div>
-        </Router>
-      </Container>
+      <Router history={history}>
+        <Grommet theme={this.THEME[this.props.theme.mode] || grommet} full>
+          <Header />
+          <Routes />
+          <Box align="center" pad="large">
+            <Footer
+              direction="row"
+              justify="center"
+              pad={{ bottom: "small" }}
+              pad={{ top: "xlarge" }}
+            >
+              <Text textAlign="center">
+                Created by Lucas <Emoji symbol="☕️" />
+              </Text>
+              {"|"}
+              <Anchor href="https://clearbit.com" label="Logos provided by Clearbit" />
+            </Footer>
+          </Box>
+        </Grommet>
+      </Router>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { auth: state.auth };
+  return { auth: state.auth, theme: state.theme };
 };
 
 export default connect(mapStateToProps, { getCurrentUserData })(App);

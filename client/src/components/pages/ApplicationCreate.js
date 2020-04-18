@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Box, Heading } from "grommet";
 import { createApplication } from "../../actions";
 import ApplicationForm from "./ApplicationForm";
 
@@ -10,10 +11,12 @@ class ApplicationCreate extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Create Application</h1>
-        <ApplicationForm onSubmit={this.onSubmit} cancelLink="/applications" />
-      </div>
+      <Box direction="column" align="center" justify="center">
+        <Box width="medium">
+          <Heading level="2">Create Application</Heading>
+          <ApplicationForm onSubmit={this.onSubmit} cancelLink="/applications" />
+        </Box>
+      </Box>
     );
   }
 }

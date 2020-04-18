@@ -3,24 +3,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchApplication, editApplication } from "../../actions";
 import ApplicationForm from "./ApplicationForm";
-import { Loader } from "semantic-ui-react";
 
 class ApplicationEdit extends React.Component {
   componentDidMount() {
     this.props.fetchApplication(this.props.match.params.id);
   }
 
-  onSubmit = formValues => {
+  onSubmit = (formValues) => {
     this.props.editApplication(this.props.match.params.id, formValues);
   };
 
   render() {
     if (!this.props.application) {
-      return (
-        <Loader active size="medium">
-          Loading...
-        </Loader>
-      );
+      return <div></div>;
     }
     return (
       <div>

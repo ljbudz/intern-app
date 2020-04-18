@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchApplication, deleteApplication } from "../../actions";
-import { Button } from "semantic-ui-react";
+import { Button } from "grommet";
 import Modal from "../Modal";
 import history from "../../history";
 

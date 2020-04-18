@@ -1,26 +1,20 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
-import { Form, Button, Message } from "semantic-ui-react";
+import { Form, FormField, TextInput, Button, Box } from "grommet";
 
 class AuthForm extends React.Component {
-  renderInput = ({ input, label, meta, type }) => {
-    const className = meta.error && meta.touched ? "error" : "";
-
+  renderInput = ({ input, label, meta, ...rest }) => {
+    const hasError = meta.error && meta.touched;
     return (
-      <Form.Field className={className}>
-        <label>{label}</label>
-        <input {...input} autoComplete="off" type={type} />
-        {this.renderError(meta)}
-      </Form.Field>
+      <FormField label={label} error={hasError ? meta.error : false}>
+        {rest.type === "email" ? (
+          <TextInput {...input} {...rest} name="email" />
+        ) : (
+          <TextInput {...input} {...rest} name="password" />
+        )}
+      </FormField>
     );
   };
-
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return <Message negative content={error} />;
-    }
-  }
 
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
@@ -28,28 +22,23 @@ class AuthForm extends React.Component {
 
   render() {
     return (
-      <Form className="ui form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name="email" component={this.renderInput} label="Enter an email" type="text"></Field>
+      <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <Field name="email" component={this.renderInput} label="Email"></Field>
         <Field
           name="password"
-          component={this.renderInput}
-          label="Enter a password"
           type="password"
+          component={this.renderInput}
+          label="Password"
         ></Field>
-        <div>
-          <Button color="blue" type="submit">
-            Submit
-          </Button>
-          <Button negative as={Link} to={this.props.cancelLink}>
-            Cancel
-          </Button>
-        </div>
+        <Box direction="row" justify="center" pad="small">
+          <Button type="submit" label="submit" />
+        </Box>
       </Form>
     );
   }
 }
 
-const validate = (formValues, props) => {
+const validate = (formValues) => {
   const errors = {};
 
   if (!formValues.email) {

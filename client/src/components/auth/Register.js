@@ -12,7 +12,7 @@ class Register extends React.Component {
     return (
       <div>
         <h1>Sign Up</h1>
-        <AuthForm onSubmit={this.onSubmit} cancelLink="/" />
+        <AuthForm onSubmit={this.onSubmit} />
       </div>
     );
   }

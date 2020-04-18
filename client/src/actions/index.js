@@ -6,11 +6,19 @@ import {
   FETCH_APPLICATIONS,
   SET_CURRENT_USER,
   GET_ERRORS,
-  LOADING_USER
+  LOADING_USER,
+  SET_THEME
 } from "./types";
 import history from "../history";
 import application from "../apis/applications";
 import auth from "../apis/auth";
+
+export const setTheme = (mode) => {
+  return {
+    type: SET_THEME,
+    payload: mode
+  };
+};
 
 export const logInUser = (formValues) => (dispatch) => {
   auth
