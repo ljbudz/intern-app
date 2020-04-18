@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Application = require("./models/application");
 const User = require("./models/user");
+const Company = require("./models/company");
+const getCompanyReviews = require("./scripts/parser");
 
 var data = [
   {
@@ -77,7 +79,31 @@ var data = [
   }
 ];
 
-function seedDB() {
+async function seedCompanies() {
+  const newData = data;
+  for await (const app of newData) {
+    await Company.findOne({ name: app.company })
+      .then(async (company) => {
+        if (company === null) {
+          const reviews = await getCompanyReviews(app.company);
+          Company.create({ name: app.company, reviews })
+            .then((newCompany) => {
+              app.company = newCompany._id;
+            })
+            .catch((err) => console.log(err));
+        } else {
+          app.company = company._id;
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
+  return newData;
+}
+
+async function seedDB() {
+  const newData = await seedCompanies();
+
   Application.deleteMany({}, (err) => {
     if (err) {
       console.log(err);
@@ -86,7 +112,7 @@ function seedDB() {
     User.findOne({ email: "hello@me.com" }, (err, user) => {
       if (err) return console.log(err);
       user.applications = [];
-      Application.insertMany(data, (err, app) => {
+      Application.insertMany(newData, (err, app) => {
         app.forEach(({ _id }) => {
           user.applications.push(_id);
         });

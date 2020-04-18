@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Application = require("../../models/application");
 const User = require("../../models/user");
+const company = require("../../models/company");
 const middleware = require("../../middleware");
 
 // INDEX route
 router.get("/", middleware.authenticated, (req, res) => {
   const { _id } = req;
   User.findById(_id)
-    .populate("applications")
+    .populate({ path: "applications", populate: { path: "company" } })
     .exec((err, user) => {
       if (err) {
         res.status(500).json("Unexpected error, please try again.");
@@ -24,7 +25,7 @@ router.get("/:id", middleware.authenticated, (req, res) => {
   const appId = req.params.id;
 
   User.findById(_id)
-    .populate({ path: "applications", match: { _id: appId } })
+    .populate({ path: "applications", match: { _id: appId }, populate: { path: "company" } })
     .exec((err, user) => {
       if (err) {
         res.status(500).json("Unexpected error, please try again.");

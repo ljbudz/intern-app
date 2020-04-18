@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const applicationSchema = new mongoose.Schema({
   title: String,
-  company: String,
+  company: { type: mongoose.Schema.Types.ObjectId, ref: "Company" },
   stage: Number
 });
 

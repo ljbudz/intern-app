@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, GET, DELETE, OPTIONS");
   next();
 });
-seedDB();
+// seedDB();
 
 app.use("/", indexRoutes);
 app.use("/applications", applicationRoutes);
